@@ -210,8 +210,8 @@ python topsis.py phones.xlsx "1,2,1" "-,+,+" results.csv
 ```
 
 Where:
-- Weights: `"1,2,1"` (Rating is twice as important)
-- Impacts: `"-,+,+"` (Lower price is better, higher rating and battery are better)
+- Weights: `"1,2,1"` (Price=1, Rating=2, Battery Life=1 - Rating is twice as important)
+- Impacts: `"-,+,+"` (Price=-, Rating=+, Battery Life=+ - Lower price is better, higher rating and battery life are better)
 
 ### Troubleshooting File Issues
 
