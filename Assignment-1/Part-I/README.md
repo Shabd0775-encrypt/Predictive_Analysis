@@ -80,7 +80,7 @@ Alternatives are ranked in descending order of their TOPSIS scores.
 ### Command Line Syntax
 
 ```bash
-python Topsis.py <InputDataFile> <Weights> <Impacts> <OutputResultFileName>
+python topsis.py <InputDataFile> <Weights> <Impacts> <OutputResultFileName>
 ```
 
 ### Parameters
@@ -93,7 +93,7 @@ python Topsis.py <InputDataFile> <Weights> <Impacts> <OutputResultFileName>
 ### Example
 
 ```bash
-python Topsis.py data.xlsx "1,1,1,2,1" "+,+,-,+,+" output.csv
+python topsis.py data.xlsx "1,1,1,2,1" "+,+,-,+,+" output.csv
 ```
 
 ## How to Upload/Prepare Your Input File
