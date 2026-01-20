@@ -96,6 +96,144 @@ python Topsis.py <InputDataFile> <Weights> <Impacts> <OutputResultFileName>
 python Topsis.py data.xlsx "1,1,1,2,1" "+,+,-,+,+" output.csv
 ```
 
+## How to Upload/Prepare Your Input File
+
+### File Format Requirements
+
+Your input file **must be** an Excel file with the `.xlsx` extension. Other formats (CSV, XLS, TXT) are not supported.
+
+### File Structure
+
+The Excel file should be structured as follows:
+
+1. **First Column**: Names or identifiers of alternatives (e.g., M1, M2, Product A, etc.)
+2. **Remaining Columns**: Numerical criteria values (at least 2 criteria columns required)
+3. **Header Row**: Include descriptive headers for each column
+
+### Step-by-Step File Preparation
+
+#### Option 1: Create a New Excel File
+
+1. **Open Microsoft Excel, Google Sheets, or LibreOffice Calc**
+2. **Create the following structure**:
+
+   | Alternative | Criterion 1 | Criterion 2 | Criterion 3 | ... |
+   |-------------|-------------|-------------|-------------|-----|
+   | Item1       | 0.75        | 85          | 12.5        | ... |
+   | Item2       | 0.82        | 90          | 10.2        | ... |
+   | Item3       | 0.68        | 78          | 15.8        | ... |
+
+3. **Save the file**:
+   - Click **File > Save As**
+   - Choose **Excel Workbook (.xlsx)** format
+   - Save it in the same directory as `topsis.py`
+   - Give it a meaningful name (e.g., `my_data.xlsx`)
+
+#### Option 2: Use the Sample Template
+
+You can use the provided `data.xlsx` file as a template:
+
+1. **Make a copy** of `data.xlsx`
+2. **Rename it** to your desired filename
+3. **Replace the data** with your own values
+4. **Keep the structure**:
+   - First column for names
+   - Remaining columns for numeric criteria
+   - Header row with column names
+
+### File Location
+
+Place your input Excel file in **one of these locations**:
+
+1. **Same directory as topsis.py** (Recommended):
+   ```
+   Assignment-1/Part-I/
+   ├── topsis.py
+   ├── your_data.xlsx  ← Your file here
+   └── README.md
+   ```
+   Then use: `python topsis.py your_data.xlsx "..." "..." output.csv`
+
+2. **Different directory** (Use absolute or relative path):
+   ```bash
+   python topsis.py /path/to/your_data.xlsx "1,1,1" "+,+,-" result.csv
+   ```
+
+### Important Requirements
+
+✅ **DO:**
+- Use `.xlsx` format (Excel 2007 and later)
+- Include at least 3 columns (1 for names + minimum 2 criteria)
+- Use numeric values only in criteria columns (columns 2 onwards)
+- Include a header row with column names
+- Ensure no empty cells in criteria columns
+- Save the file before running the program
+
+❌ **DON'T:**
+- Use CSV, TXT, or old XLS format
+- Put text/strings in criteria columns (except headers)
+- Leave criteria cells empty
+- Use special characters or formulas in data cells
+- Have less than 3 columns total
+
+### Verification Checklist
+
+Before running TOPSIS, verify your file:
+
+- [ ] File has `.xlsx` extension
+- [ ] File has at least 3 columns (1 identifier + 2+ criteria)
+- [ ] First column contains alternative names/IDs
+- [ ] Columns 2 to last contain only numeric values
+- [ ] No empty cells in the data range
+- [ ] Header row is present
+- [ ] File is saved and closed (not open in Excel)
+- [ ] File is accessible from the command line path you're using
+
+### Example: Creating a Custom Input File
+
+Let's say you want to compare 4 smartphones based on 3 criteria:
+
+**Step 1**: Create an Excel file with this structure:
+
+| Phone Model | Price  | Rating | Battery Life |
+|-------------|--------|--------|--------------|
+| Phone A     | 599.99 | 4.5    | 24           |
+| Phone B     | 799.99 | 4.8    | 30           |
+| Phone C     | 499.99 | 4.2    | 20           |
+| Phone D     | 699.99 | 4.6    | 28           |
+
+**Step 2**: Save as `phones.xlsx` in the Part-I directory
+
+**Step 3**: Run the command:
+```bash
+python topsis.py phones.xlsx "1,2,1" "-,+,+" results.csv
+```
+
+Where:
+- Weights: `"1,2,1"` (Rating is twice as important)
+- Impacts: `"-,+,+"` (Lower price is better, higher rating and battery are better)
+
+### Troubleshooting File Issues
+
+**Error: "Input file not found"**
+- Check the file path is correct
+- Ensure the file exists in the specified location
+- Use quotes around paths with spaces: `"my data.xlsx"`
+
+**Error: "Unable to read input file"**
+- Verify the file is in `.xlsx` format
+- Make sure the file is not corrupted
+- Close the file if it's open in Excel
+- Check file permissions (must be readable)
+
+**Error: "Input file must contain three or more columns"**
+- Add more criteria columns (need at least 2 criteria + 1 name column)
+
+**Error: "From 2nd to last columns must contain numeric values only"**
+- Remove any text from criteria columns (keep text only in first column)
+- Check for hidden characters or spaces
+- Ensure cells don't contain formulas, only values
+
 ## Input Validation
 
 The program performs comprehensive validation checks:
