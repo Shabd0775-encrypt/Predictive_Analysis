@@ -1,0 +1,7 @@
+
+Model,Perplexity,BLEU,ROUGE,Inference_Time,Model_Size,Human_Score
+GPT-2,35,21,23,120,500,7.8
+GPT-Neo,28,25,27,200,2500,8.4
+T5,32,23,25,150,900,8.0
+BART-Large,26,27,30,180,1600,8.6
+XLNet,30,24,26,210,1200,8.2
